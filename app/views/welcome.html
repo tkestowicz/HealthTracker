@@ -1,3 +1,37 @@
-﻿<section>
-    <h2 data-bind="html:welcome"></h2>
+<h2 data-bind="html:welcome"></h2>
+    
+﻿<section id="addTraing">
+    <form id="addTrainingForm">
+        
+        <label class="required" for="trainingType">Typ treningu</label>
+        <select id="trainingType" name="trainingType">
+            <option>Type1</option>
+            <option>Type2</option>
+            <option>Type3</option>
+        </select>
+        
+        <label class="required" for="trainingLength">Długość treningu</label>
+        <input id="trainingLength" type="text" name="trainingLength" value="hh:mm" />
+        
+        <label for="trainingLength">Czas treningu w wyznaczonej strefie</label>
+        <input id="trainingLength" type="text" name="trainingLength" value="hh:mm" />
+        
+        <label for="avrHR">HR śrenie</label>
+        <input id="avrHR" type="text" name="avrHR" value="" />
+        
+        <label for="maxHR">HR max</label>
+        <input id="maxHR" type="text" name="maxHR" value="" />
+        
+        <label class="required" for="calories">Spalone kalorie</label>
+        <input id="calories" type="text" name="calories" value="" />
+        
+        <label class="required" for="fat">Spalona tkanka tłuszczowa (g)</label>
+        <input id="fat" type="text" name="fat" value="" />
+        
+        <label for="externalLink">Link do treningu</label>
+        <input id="externalLink" type="text" name="externalLink" value="" />
+        
+        <br /> <!-- docelowo nie bydzie br :P -->
+        <button type="button" class="btn btn-success btn-lg">Send</button>
+    </form>
 </section>
