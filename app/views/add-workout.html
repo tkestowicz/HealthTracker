@@ -5,6 +5,10 @@
     <div class="modal-body">
         <section id="addTraining">
             <form id="addTrainingForm" data-bind="with: providedData">
+                <div class="form-group" data-bind="css: { 'has-error': !date.isValid()}">
+                    <label class="control-label" for="date">Date</label>
+                    <input class="form-control" name="date" type="text" data-bind="value: date" placeholder="dd-mm-yyyy"/>
+                </div>
                 <div class="form-group" data-bind="css: { 'has-error': type.isValid() === false}">
                     <label class="control-label" for="trainingType">Type</label>
                     <select class="form-control" name="trainingType" data-bind="options: $parent.trainingTypes, value: type, optionsCaption: 'Choose...'">
