@@ -158,6 +158,7 @@ figure#siteQuote blockquote{
     position: relative;
     text-align: center;
     top: 127px;
+    text-shadow: 0 0 14px #000000;
 }
 figure#siteQuote figcaption{
     color: #FFFFFF;
@@ -166,4 +167,5 @@ figure#siteQuote figcaption{
     right: 26%;
     text-align: right;
     top: 140px;
+    text-shadow: 0 0 14px #000000;
 }
