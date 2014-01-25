@@ -5,6 +5,7 @@
         'plugins' : '../lib/durandal/js/plugins',
         'transitions' : '../lib/durandal/js/transitions',
         'knockout': '../lib/knockout/knockout-2.3.0',
+        'knockout-validation': '../lib/knockout-validation/knockout-validation',
         'bootstrap': '../lib/bootstrap/js/bootstrap',
         'jquery': '../lib/jquery/jquery-1.9.1'
     },
@@ -16,10 +17,16 @@
     }
 });
 
-define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],  function (system, app, viewLocator) {
+define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'knockout','knockout-validation'],
+  function (system, app, viewLocator, ko, validation) {
     //>>excludeStart("build", true);
     system.debug(true);
     //>>excludeEnd("build");
+
+    // replaces error class with bootstrap one
+    ko.validation.configure({
+        errorClass: 'text-danger'
+    });
 
     app.title = 'Health Tracker';
 
