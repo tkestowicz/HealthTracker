@@ -1,20 +1,36 @@
 ﻿<div>
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
+    <header id="siteHeader">
+        <div class="container">
+        <h1>
             <a class="brand" data-bind="attr: { href: router.navigationModel()[0].hash }">
-                <i class="icon-home"></i>
-                <span>Health Tracker</span>
+                Health Tracker
             </a>
-            <ul class="nav" data-bind="foreach: router.navigationModel">
-                <li data-bind="css: { active: isActive }">
-                    <a data-bind="attr: { href: hash }, html: title"></a>
-                </li>
-            </ul>
-            <div class="loader pull-right" data-bind="css: { active: router.isNavigating }">
-                <i class="icon-spinner icon-2x icon-spin"></i>
-            </div>
-        </div>
-    </div>
+        </h1>
+        
+        <nav id="siteNav">
+           <ul class="nav" data-bind="foreach: router.navigationModel">
+               <li data-bind="css: { active: isActive }">
+                   <a data-bind="attr: { href: hash }, html: title"></a>
+               </li>
+           </ul>
+        </nav>    
+       
+        <nav id="modalsNav">
+            <ul class="nav" data-bind="foreach: modalButtons">
+                 <li>
+                    <a data-bind="html: title, click: $parent.modalProvider.open, attr: { 'class': modalClass}"></a>
+                 </li>
+             </ul>
+        </nav>   
+            
+        </div>   
+    </header>
+    <figure id="siteQuote" class="container">
+      <blockquote cite="http://www.keepinspiring.me/100-most-inspirational-sports-quotes-of-all-time/">
+        “Good is not good when better is expected.”
+      </blockquote>
+      <figcaption>- Vin Scully</figcaption>  
+    </figure>
     
-    <div class="container-fluid page-host" data-bind="router: { transition:'entrance', cacheViews:true }"></div>
+    <div class="container page-host" data-bind="router: { transition:'entrance', cacheViews:true }"></div>
 </div>
