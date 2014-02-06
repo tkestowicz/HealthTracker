@@ -46,11 +46,11 @@
                     <input class="form-control" type="url" name="externalLink" data-bind="value: endomondoUrl" placeholder="http://"/>
                 </div>
                 <br /> <!-- docelowo nie bydzie br :P -->
-                <button type="button" class="btn btn-success" data-bind="click: $parent.save">Send</button>
+                <button type="button" class="btn btn-success" data-bind="click: $root.save, enable: $parent.saveBtnEnabled">Send</button>
             </form>
         </section>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-danger" data-bind="click: modalProvider.close">Close</button>
+        <button class="btn btn-danger" data-bind="click: abort">Close</button>
     </div>
 </div>

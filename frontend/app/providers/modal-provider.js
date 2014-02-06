@@ -3,8 +3,8 @@ define(['plugins/dialog'], function(dialog){
 		open: function(template){
 			dialog.show(template.moduleId);
 		},
-		close: function(){
-			dialog.close(this);
+		close: function(view){
+			dialog.close(view);
 		}
 	};
 });

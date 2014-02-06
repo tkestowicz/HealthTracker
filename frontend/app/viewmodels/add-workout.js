@@ -1,32 +1,57 @@
-define(['providers/modal-provider', 'knockout', 'jquery', 'knockout-validation']
-	, function(modalProvider, ko, $, validation){
+define(['providers/modal-provider', 'knockout', 'jquery', 'knockout-validation', 'services/workouts-service', 'durandal/app']
+	, function(modalProvider, ko, $, validation, workoutsService, app){
 	
-	var trainingData = {
-		date: ko.observable().extend({ required: true, date: true }),
-		length: ko.observable().extend({ required: true }),
-		inZone: ko.observable().extend({ required: true }),
-		type: ko.observable().extend({ required: true }),
-		heartRate:{
-			avg: ko.observable().extend({ required: true, min: 60, max: 220 }),
-			max: ko.observable().extend({ min: 60, max: 220 })
-		},
-		burnt: {
-			calories: ko.observable().extend({ required: true, min: 0 }),
-			fat: ko.observable().extend({ required: true, min: 0 })
-		},
-		endomondoUrl: ko.observable()
-	};
+	var createFormViewModel = function(){
+		return {
+			date: ko.observable('2014-05-02').extend({ required: true, date: true }),
+			length: ko.observable('1:46').extend({ required: true }),
+			inZone: ko.observable('1:00').extend({ required: true }),
+			type: ko.observable(1).extend({ required: true }),
+			heartRate:{
+				avg: ko.observable(142).extend({ required: true, min: 60, max: 220 }),
+				max: ko.observable(160).extend({ min: 60, max: 220 })
+			},
+			burnt: {
+				calories: ko.observable(1200).extend({ required: true, min: 0 }),
+				fat: ko.observable(40).extend({ required: true, min: 0 })
+			},
+			endomondoUrl: ko.observable()
+		};
+	},
+	closeWindow = function(view){
+		view.providedData = createFormViewModel();	
+		modalProvider.close(view);	
+	},
+	trainingData = createFormViewModel(),
+	saveBtnEnabled = ko.observable(true);
+		
 
 	return {
+
 		trainingTypes: ['Gym', 'Running', 'Cycling'],
-		modalProvider: modalProvider,
 		providedData: trainingData,
 		validationErrors: ko.validation.group(trainingData),
-		save: function(){
-			if(trainingData.isValid())
-				console.log("Data to send");
+		saveBtnEnabled: saveBtnEnabled,
+
+		abort: closeWindow,
+
+		save: function(view){
+			if(trainingData.isValid()){
+
+			saveBtnEnabled(false);
+
+			workoutsService.insert(trainingData).fail(function(){
+					app.showMessage('An error occured during workout saving. Please try again.');					
+				}).done(function(){
+					app.showMessage('Workout successfully saved.');
+					closeWindow(view);	
+				}).always(function(){
+					saveBtnEnabled(true);
+				});
+
+			}
 			else
-				console.log("Validation errors");
+				app.showMessage("Some fields have invalid data.");
 		}
 	};
 });

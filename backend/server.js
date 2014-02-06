@@ -18,6 +18,7 @@ var cfg = {
 
 server.use(restify.queryParser({ mapParams: false })); // plugin is used to parse the HTTP query string (i.e., /jobs?skills=java,mysql). The parsed content will always be available in req.query.
 server.use(restify.bodyParser());  // takes care of turning your request data into a JavaScript object on the server automatically
+server.use(restify.CORS());
 
 services.workout(db, server, restify);
 
