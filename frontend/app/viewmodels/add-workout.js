@@ -1,5 +1,6 @@
-define(['providers/modal-provider', 'knockout', 'jquery', 'knockout-validation', 'services/workouts-service', 'durandal/app']
-	, function(modalProvider, ko, $, validation, workoutsService, app){
+define(['providers/modal-provider', 'knockout', 'jquery', 
+	'knockout-validation', 'services/workouts-service', 'durandal/app', 'module']
+	, function(modalProvider, ko, $, validation, workoutsService, app, currentModule){
 	
 	var createFormViewModel = function(){
 		return {
