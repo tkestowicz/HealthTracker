@@ -28,7 +28,7 @@ define(['providers/modal-provider', 'knockout', 'jquery', 'knockout-validation',
 
 	return {
 
-		trainingTypes: ['Gym', 'Running', 'Cycling'],
+		trainingTypes: [{id: 1, name: 'Gym'}, {id:2, name:'Running'}, {id:3, name:'Cycling'}],
 		providedData: trainingData,
 		validationErrors: ko.validation.group(trainingData),
 		saveBtnEnabled: saveBtnEnabled,

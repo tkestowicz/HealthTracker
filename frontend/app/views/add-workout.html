@@ -11,7 +11,7 @@
                 </div>
                 <div class="form-group" data-bind="css: { 'has-error': type.isValid() === false}">
                     <label class="control-label" for="trainingType">Type</label>
-                    <select class="form-control" name="trainingType" data-bind="options: $parent.trainingTypes, value: type, optionsCaption: 'Choose...'">
+                    <select class="form-control" name="trainingType" data-bind="options: $parent.trainingTypes, value: type, optionsCaption: 'Choose...', optionsText: 'name', optionsValue: 'id'">
                     </select>
                 </div>
                 <div class="form-group" data-bind="css: { 'has-error': !length.isValid()}">

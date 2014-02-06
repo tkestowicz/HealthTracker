@@ -11,7 +11,7 @@ define(['plugins/http', 'repositories/routes-repository', 'helpers/date-helper']
 						month: dateOfTheTraining.getMonth(),
 						week: dateHelper.weekNumberOfTheYear(dateOfTheTraining)
 					},
-					type: trainingData.type,
+					type: trainingData.type(),
 					params: {
 						time:{
 							duration: 4800,
@@ -19,15 +19,15 @@ define(['plugins/http', 'repositories/routes-repository', 'helpers/date-helper']
 						},
 						health:{
 							burnt:{
-								fat: trainingData.burnt.fat,
-								calories: trainingData.burnt.calories
+								fat: trainingData.burnt.fat(),
+								calories: trainingData.burnt.calories()
 							},
 							heartRate:{
-								max: trainingData.heartRate.max,
-								avg: trainingData.heartRate.avg
+								max: trainingData.heartRate.max(),
+								avg: trainingData.heartRate.avg()
 							}
 						},
-						endomondoUrl: trainingData.endomondoUrl
+						endomondoUrl: trainingData.endomondoUrl()
 					}
 				};
 
