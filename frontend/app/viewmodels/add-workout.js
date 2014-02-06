@@ -11,20 +11,30 @@ define(['providers/modal-provider', 'knockout', 'jquery',
 				message: 'Correct format for this field is: hh:mm.'
 			};
 
+			var endomondoUrl = ko.observable();
+
 			return {
-				date: ko.observable('2014-05-02').extend({ required: true, date: true }),
-				length: ko.observable('1:46').extend({ required: true, pattern: timeValidation }),
-				inZone: ko.observable('1:00').extend({ required: true, pattern: timeValidation }),
-				type: ko.observable(2).extend({ required: true }),
+				date: ko.observable().extend({ required: true, date: true }),
+				length: ko.observable().extend({ required: true, pattern: timeValidation }),
+				inZone: ko.observable().extend({ required: true, pattern: timeValidation }),
+				type: ko.observable().extend({ required: true }),
 				heartRate:{
-					avg: ko.observable(142).extend({ required: true, min: 60, max: 220 }),
-					max: ko.observable(160).extend({ min: 60, max: 220 })
+					avg: ko.observable().extend({ required: true, min: 60, max: 220 }),
+					max: ko.observable().extend({ min: 60, max: 220 })
 				},
 				burnt: {
-					calories: ko.observable(1200).extend({ required: true, min: 0 }),
-					fat: ko.observable(40).extend({ required: true, min: 0 })
+					calories: ko.observable().extend({ required: true, min: 0 }),
+					fat: ko.observable().extend({ required: true, min: 0 })
 				},
-				endomondoUrl: ko.observable()
+				endomondoUrl: endomondoUrl.extend({ 
+					pattern: { 
+						params: '^(https{0,1}://|www.|https{0,1}://www.)endomondo.com/workouts/{0,1}[0-9]*/[0-9]*$', 
+						message: 'Incorrect URL to Endomondo training.',
+						onlyIf: function(){ 
+							return endomondoUrl() !== undefined; 
+						}
+					}
+				})
 			};
 		};
 

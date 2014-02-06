@@ -41,7 +41,7 @@
                     <input class="form-control" type="text" name="fat" data-bind="value: burnt.fat, enable: $parent.saveBtnEnabled"/>
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group" data-bind="css: { 'has-error': $parent.isInvalid(endomondoUrl), 'has-success': $parent.isValid(endomondoUrl)}">
                     <label class="control-label" for="externalLink">URL to Endomondo Training</label>
                     <input class="form-control" type="url" name="externalLink" data-bind="value: endomondoUrl, enable: $parent.saveBtnEnabled" placeholder="http://"/>
                 </div>
