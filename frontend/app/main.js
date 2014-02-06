@@ -24,8 +24,9 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'knockout','k
     //>>excludeEnd("build");
 
     // replaces error class with bootstrap one
-    ko.validation.configure({
-        errorClass: 'text-danger'
+    ko.validation.init({
+        errorMessageClass: 'text-danger',
+        grouping: {deep: true}
     });
 
     app.title = 'Health Tracker';

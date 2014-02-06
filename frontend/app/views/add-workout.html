@@ -5,38 +5,38 @@
     <div class="modal-body">
         <section id="addTraining">
             <form id="addTrainingForm" data-bind="with: providedData">
-                <div class="form-group" data-bind="css: { 'has-error': !date.isValid()}">
+                <div class="form-group" data-bind="css: { 'has-error': !date.isValid() && date.isModified()}">
                     <label class="control-label" for="date">Date</label>
-                    <input class="form-control" name="date" type="text" data-bind="value: date, enable: $parent.saveBtnEnabled" placeholder="dd-mm-yyyy"/>
+                    <input class="form-control has-error" name="date" type="text" data-bind="value: date, enable: $parent.saveBtnEnabled" placeholder="dd-mm-yyyy"/>
                 </div>
-                <div class="form-group" data-bind="css: { 'has-error': type.isValid() === false}">
+                <div class="form-group" data-bind="css: { 'has-error': !type.isValid() && type.isModified()}">
                     <label class="control-label" for="trainingType">Type</label>
                     <select class="form-control" name="trainingType" data-bind="options: $parent.trainingTypes, value: type, optionsCaption: 'Choose...', optionsText: 'name', optionsValue: 'id', enable: $parent.saveBtnEnabled">
                     </select>
                 </div>
-                <div class="form-group" data-bind="css: { 'has-error': !length.isValid()}">
+                <div class="form-group" data-bind="css: { 'has-error': !length.isValid() && length.isModified()}">
                     <label class="control-label" for="trainingLength">Duration</label>
                     <input class="form-control" name="trainingLength" type="text" data-bind="value: length, enable: $parent.saveBtnEnabled" placeholder="hh:mm"/>
                 </div>
-                <div class="form-group" data-bind="css: { 'has-error': !inZone.isValid()}">
+                <div class="form-group" data-bind="css: { 'has-error': !inZone.isValid() && inZone.isModified()}">
                     <label class="control-label" for="inZone">Time in Zone</label>
                     <input class="form-control" name="inZone" type="text" data-bind="value: inZone, enable: $parent.saveBtnEnabled" placeholder="hh:mm"/>
                 </div>
-                <div class="form-group" data-bind="css: { 'has-error': !heartRate.avg.isValid() }">
+                <div class="form-group" data-bind="css: { 'has-error': !heartRate.avg.isValid() && hearthRate.avg.isModified() }">
                     <label class="control-label" for="avrHR">Average HR</label>
                     <input class="form-control" name="avrHR" type="text" data-bind="value: heartRate.avg, enable: $parent.saveBtnEnabled" placeholder="Value from range 60-220" />
                 </div>
                 
-                <div class="form-group" data-bind="css: { 'has-error': !heartRate.max.isValid()}">
+                <div class="form-group" data-bind="css: { 'has-error': !heartRate.max.isValid() && hearthRate.max.isModified()}">
                     <label class="control-label" for="maxHR">Max HR</label>
                     <input class="form-control" type="text" name="maxHR" data-bind="value: heartRate.max, enable: $parent.saveBtnEnabled" placeholder="Value from range 60-220"/>
                 </div>
 
-                <div class="form-group" data-bind="css: { 'has-error': !burnt.calories.isValid()}">
+                <div class="form-group" data-bind="css: { 'has-error': !burnt.calories.isValid() && burnt.calories.isModified()}">
                     <label class="control-label" for="calories">Calories Burnt (kcal)</label>
                     <input class="form-control" type="text" name="calories" data-bind="value: burnt.calories, enable: $parent.saveBtnEnabled" />
                 </div>
-                <div class="form-group" data-bind="css: { 'has-error': !burnt.fat.isValid()}">
+                <div class="form-group" data-bind="css: { 'has-error': !burnt.fat.isValid() && burnt.fat.isModified()}">
                     <label class="control-label" for="fat">Fat Burnt (g)</label>
                     <input class="form-control" type="text" name="fat" data-bind="value: burnt.fat, enable: $parent.saveBtnEnabled"/>
                 </div>
