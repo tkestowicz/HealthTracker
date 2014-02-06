@@ -14,8 +14,8 @@ define(['plugins/http', 'repositories/routes-repository', 'helpers/date-helper']
 					type: trainingData.type(),
 					params: {
 						time:{
-							duration: 4800,
-							inZone: 4320
+							duration: dateHelper.convertStringToTimespan(trainingData.length()),
+							inZone: dateHelper.convertStringToTimespan(trainingData.inZone())
 						},
 						health:{
 							burnt:{
