@@ -7,43 +7,43 @@
             <form id="addTrainingForm" data-bind="with: providedData">
                 <div class="form-group" data-bind="css: { 'has-error': !date.isValid()}">
                     <label class="control-label" for="date">Date</label>
-                    <input class="form-control" name="date" type="text" data-bind="value: date" placeholder="dd-mm-yyyy"/>
+                    <input class="form-control" name="date" type="text" data-bind="value: date, enable: $parent.saveBtnEnabled" placeholder="dd-mm-yyyy"/>
                 </div>
                 <div class="form-group" data-bind="css: { 'has-error': type.isValid() === false}">
                     <label class="control-label" for="trainingType">Type</label>
-                    <select class="form-control" name="trainingType" data-bind="options: $parent.trainingTypes, value: type, optionsCaption: 'Choose...', optionsText: 'name', optionsValue: 'id'">
+                    <select class="form-control" name="trainingType" data-bind="options: $parent.trainingTypes, value: type, optionsCaption: 'Choose...', optionsText: 'name', optionsValue: 'id', enable: $parent.saveBtnEnabled">
                     </select>
                 </div>
                 <div class="form-group" data-bind="css: { 'has-error': !length.isValid()}">
                     <label class="control-label" for="trainingLength">Duration</label>
-                    <input class="form-control" name="trainingLength" type="text" data-bind="value: length" placeholder="hh:mm"/>
+                    <input class="form-control" name="trainingLength" type="text" data-bind="value: length, enable: $parent.saveBtnEnabled" placeholder="hh:mm"/>
                 </div>
                 <div class="form-group" data-bind="css: { 'has-error': !inZone.isValid()}">
                     <label class="control-label" for="inZone">Time in Zone</label>
-                    <input class="form-control" name="inZone" type="text" data-bind="value: inZone" placeholder="hh:mm"/>
+                    <input class="form-control" name="inZone" type="text" data-bind="value: inZone, enable: $parent.saveBtnEnabled" placeholder="hh:mm"/>
                 </div>
                 <div class="form-group" data-bind="css: { 'has-error': !heartRate.avg.isValid() }">
                     <label class="control-label" for="avrHR">Average HR</label>
-                    <input class="form-control" name="avrHR" type="text" data-bind="value: heartRate.avg" placeholder="Value from range 60-220" />
+                    <input class="form-control" name="avrHR" type="text" data-bind="value: heartRate.avg, enable: $parent.saveBtnEnabled" placeholder="Value from range 60-220" />
                 </div>
                 
                 <div class="form-group" data-bind="css: { 'has-error': !heartRate.max.isValid()}">
                     <label class="control-label" for="maxHR">Max HR</label>
-                    <input class="form-control" type="text" name="maxHR" data-bind="value: heartRate.max" placeholder="Value from range 60-220"/>
+                    <input class="form-control" type="text" name="maxHR" data-bind="value: heartRate.max, enable: $parent.saveBtnEnabled" placeholder="Value from range 60-220"/>
                 </div>
 
                 <div class="form-group" data-bind="css: { 'has-error': !burnt.calories.isValid()}">
                     <label class="control-label" for="calories">Calories Burnt (kcal)</label>
-                    <input class="form-control" type="text" name="calories" data-bind="value: burnt.calories" />
+                    <input class="form-control" type="text" name="calories" data-bind="value: burnt.calories, enable: $parent.saveBtnEnabled" />
                 </div>
                 <div class="form-group" data-bind="css: { 'has-error': !burnt.fat.isValid()}">
                     <label class="control-label" for="fat">Fat Burnt (g)</label>
-                    <input class="form-control" type="text" name="fat" data-bind="value: burnt.fat"/>
+                    <input class="form-control" type="text" name="fat" data-bind="value: burnt.fat, enable: $parent.saveBtnEnabled"/>
                 </div>
                 
                 <div class="form-group">
                     <label class="control-label" for="externalLink">URL to Endomondo Training</label>
-                    <input class="form-control" type="url" name="externalLink" data-bind="value: endomondoUrl" placeholder="http://"/>
+                    <input class="form-control" type="url" name="externalLink" data-bind="value: endomondoUrl, enable: $parent.saveBtnEnabled" placeholder="http://"/>
                 </div>
                 <br /> <!-- docelowo nie bydzie br :P -->
                 <button type="button" class="btn btn-success" data-bind="click: $parent.save.bind($data, $parent), enable: $parent.saveBtnEnabled">Send</button>
