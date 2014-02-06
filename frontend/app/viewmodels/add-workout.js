@@ -57,6 +57,14 @@ define(['providers/modal-provider', 'knockout', 'jquery',
 				app.showMessage("Some fields have invalid data.");
 			}				
 		};
+
+		this.isValid = function(field){
+			return field.isValid() && field.isModified();
+		};
+
+		this.isInvalid = function(field){
+			return !field.isValid() && field.isModified();
+		};
 	};
 
 	return ctor;
