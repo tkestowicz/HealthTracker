@@ -5,10 +5,16 @@ define(['providers/modal-provider', 'knockout', 'jquery',
 	var ctor = function(){
 
 		var createFormViewModel = function(){
+
+			var timeValidation = {
+				params: '^[1-9]{0,1}[0-9]:[0-5]{1}[0-9]{0,1}$',
+				message: 'Correct format for this field is: hh:mm.'
+			};
+			
 			return {
 				date: ko.observable('2014-05-02').extend({ required: true, date: true }),
-				length: ko.observable(undefined).extend({ required: true }),
-				inZone: ko.observable('1:00').extend({ required: true }),
+				length: ko.observable(undefined).extend({ required: true, pattern: timeValidation }),
+				inZone: ko.observable('1:00').extend({ required: true, pattern: timeValidation }),
 				type: ko.observable(undefined).extend({ required: true }),
 				heartRate:{
 					avg: ko.observable(142).extend({ required: true, min: 60, max: 220 }),
