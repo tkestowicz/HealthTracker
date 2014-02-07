@@ -1,0 +1,49 @@
+<div class="messageBox">
+    <div class="modal-header">
+        <h3>Add measurement</h3>
+    </div>
+    <div class="modal-body">
+        <section id="addMeasurement">
+            <form id="addMeasurementForm" data-bind="with: providedData">
+                <div class="form-group" data-bind="css: { 'has-error': !date.isValid()}">
+                    <label class="control-label" for="date">Date</label>
+                    <input class="form-control" name="date" type="text" data-bind="value: date" placeholder="dd-mm-yyyy"/>
+                </div>
+                
+                <div class="form-group" data-bind="css: { 'has-error': !weight.isValid()}">
+                    <label class="control-label" for="weight">Weight (kg)</label>
+                    <input class="form-control" name="weight" type="text" data-bind="value: weight" placeholder="Value from range 0-150"/>
+                </div>
+                <div class="form-group" data-bind="css: { 'has-error': !fat.percent.isValid()}">
+                    <label class="control-label" for="fatPercent">Fat tissue (%)</label>
+                    <input class="form-control" name="fatPercent" type="text" data-bind="value: fat.percent" placeholder="Value from range 0-100"/>
+                </div>
+                <div class="form-group" data-bind="css: { 'has-error': !fat.mass.isValid() }">
+                    <label class="control-label" for="fatMass">Fat mass (kg)</label>
+                    <input class="form-control" name="fatMass" type="text" data-bind="value: fat.mass" placeholder="Value from range 0-100" />
+                </div>
+                
+                <div class="form-group" data-bind="css: { 'has-error': !muscleMass.isValid()}">
+                    <label class="control-label" for="muscleMass">Muscle mass (kg)</label>
+                    <input class="form-control" type="text" name="muscleMass" data-bind="value: muscleMass" placeholder="Value from range 60-220"/>
+                </div>
+
+                <div class="form-group" data-bind="css: { 'has-error': !metabolismAge.isValid()}">
+                    <label class="control-label" for="metabolismAge">Metabolism age</label>
+                    <input class="form-control" type="text" name="metabolismAge" data-bind="value: metabolismAge" />
+                </div>
+                <div class="form-group" data-bind="css: { 'has-error': !fat.organs.isValid()}">
+                    <label class="control-label" for="fatOrgans">Fatness of the internal organs</label>
+                    <input class="form-control" type="text" name="fatOrgans" data-bind="value: fat.organs"/>
+                </div>
+                
+       
+                <br /> <!-- docelowo nie bydzie br :P -->
+                <button type="button" class="btn btn-success" data-bind="click: $root.save, enable: $parent.saveBtnEnabled">Send</button>
+            </form>
+        </section>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" data-bind="click: abort">Close</button>
+    </div>
+</div>

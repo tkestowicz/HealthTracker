@@ -2,7 +2,8 @@ define(['plugins/router', 'durandal/app', 'providers/modal-provider'], function 
     return {
     	modalProvider: modalProvider,
     	modalButtons: [
-    		{ title: 'Add workout', moduleId: 'viewmodels/add-workout', modalClass: 'addWorkout' }
+    		{ title: 'Add workout', moduleId: 'viewmodels/add-workout', modalClass: 'addWorkout' },
+                { title: 'Add measurement', moduleId: 'viewmodels/add-measurement', modalClass: 'addMeasurement' }
     	],
         router: router,
         activate: function () {

@@ -157,7 +157,7 @@ figure#siteQuote blockquote{
     padding: 0 0 0 15px;
     position: relative;
     text-align: center;
-    top: 127px;
+    top: 84px;
     text-shadow: 0 0 14px #000000;
 }
 figure#siteQuote figcaption{
@@ -166,6 +166,11 @@ figure#siteQuote figcaption{
     position: relative;
     right: 26%;
     text-align: right;
-    top: 140px;
+    top: 50px;
     text-shadow: 0 0 14px #000000;
+}
+
+header#siteHeader nav#modalsNav li {
+  display: inline;
+  margin-left: 17px;
 }
