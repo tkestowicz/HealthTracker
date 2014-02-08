@@ -5,41 +5,43 @@
     <div class="modal-body">
         <section id="addMeasurement">
             <form id="addMeasurementForm" data-bind="with: providedData">
-                <div class="form-group" data-bind="css: { 'has-error': !date.isValid()}">
+                <div class="form-group" data-bind="css: { 'has-error': $parent.isInvalid(date), 'has-success': $parent.isValid(date)}">
                     <label class="control-label" for="date">Date</label>
-                    <input class="form-control" name="date" type="text" data-bind="value: date" placeholder="dd-mm-yyyy"/>
+                    <input class="form-control" name="date" type="text" data-bind="value: date, enable: $parent.formEnabled" placeholder="yyyy-mm-dd"/>
                 </div>
                 
-                <div class="form-group" data-bind="css: { 'has-error': !weight.isValid()}">
+                <div class="form-group" data-bind="css: { 'has-error': $parent.isInvalid(weight), 'has-success': $parent.isValid(weight)}">
                     <label class="control-label" for="weight">Weight (kg)</label>
-                    <input class="form-control" name="weight" type="text" data-bind="value: weight" placeholder="Value from range 0-150"/>
+                    <input class="form-control" name="weight" type="text" data-bind="value: weight, enable: $parent.formEnabled" placeholder="Positive numeric value"/>
                 </div>
-                <div class="form-group" data-bind="css: { 'has-error': !fat.percent.isValid()}">
-                    <label class="control-label" for="fatPercent">Fat tissue (%)</label>
-                    <input class="form-control" name="fatPercent" type="text" data-bind="value: fat.percent" placeholder="Value from range 0-100"/>
+                <div class="form-group" data-bind="css: { 'has-error': $parent.isInvalid(fat.percent), 'has-success': $parent.isValid(fat.percent)}">
+                    <label class="control-label" for="fatPercent">Fat %</label>
+                    <input class="form-control" name="fatPercent" type="text" data-bind="value: fat.percent, enable: $parent.formEnabled" placeholder="Value from range 0-100%"/>
                 </div>
-                <div class="form-group" data-bind="css: { 'has-error': !fat.mass.isValid() }">
-                    <label class="control-label" for="fatMass">Fat mass (kg)</label>
-                    <input class="form-control" name="fatMass" type="text" data-bind="value: fat.mass" placeholder="Value from range 0-100" />
+                <div class="form-group" data-bind="css: { 'has-error': $parent.isInvalid(fat.mass), 'has-success': $parent.isValid(fat.mass)}">
+                    <label class="control-label" for="fatMass">Fat Mass (kg)</label>
+                    <input class="form-control" name="fatMass" type="text" data-bind="value: fat.mass, enable: $parent.formEnabled" placeholder="Positive numeric value" />
                 </div>
                 
-                <div class="form-group" data-bind="css: { 'has-error': !muscleMass.isValid()}">
-                    <label class="control-label" for="muscleMass">Muscle mass (kg)</label>
-                    <input class="form-control" type="text" name="muscleMass" data-bind="value: muscleMass" placeholder="Value from range 60-220"/>
+                <div class="form-group" data-bind="css: { 'has-error': $parent.isInvalid(muscleMass), 'has-success': $parent.isValid(muscleMass)}">
+                    <label class="control-label" for="muscleMass">Muscle Mass (kg)</label>
+                    <input class="form-control" type="text" name="muscleMass" data-bind="value: muscleMass, enable: $parent.formEnabled" placeholder="Positive numeric value"/>
                 </div>
 
-                <div class="form-group" data-bind="css: { 'has-error': !metabolismAge.isValid()}">
-                    <label class="control-label" for="metabolismAge">Metabolism age</label>
-                    <input class="form-control" type="text" name="metabolismAge" data-bind="value: metabolismAge" />
+                <div class="form-group" data-bind="css: { 'has-error': $parent.isInvalid(metabolicAge), 'has-success': $parent.isValid(metabolicAge)}">
+                    <label class="control-label" for="metabolicAge">Metabolc Age</label>
+                    <input class="form-control" type="text" name="metabolicAge" data-bind="value: metabolicAge, enable: $parent.formEnabled" placeholder="Positive numeric value" />
                 </div>
-                <div class="form-group" data-bind="css: { 'has-error': !fat.organs.isValid()}">
-                    <label class="control-label" for="fatOrgans">Fatness of the internal organs</label>
-                    <input class="form-control" type="text" name="fatOrgans" data-bind="value: fat.organs"/>
+                <div class="form-group" data-bind="css: { 'has-error': $parent.isInvalid(fat.visceralRating), 'has-success': $parent.isValid(fat.visceralRating)}">
+                    <label class="control-label" for="fatVisceralRating">Visceral Fat Rating</label>
+                    <input class="form-control" type="text" name="fatVisceralRating" data-bind="value: fat.visceralRating, enable: $parent.formEnabled" placeholder="Positive numeric value" />
                 </div>
-                
-       
+                <div class="form-group" data-bind="css: { 'has-error': $parent.isInvalid(bmr), 'has-success': $parent.isValid(bmr)}">
+                    <label class="control-label" for="bmr">Basal Metabolic Rate (kcal)</label>
+                    <input class="form-control" type="text" name="bmr" data-bind="value: bmr, enable: $parent.formEnabled" placeholder="Positive numeric value" />
+                </div>       
                 <br /> <!-- docelowo nie bydzie br :P -->
-                <button type="button" class="btn btn-success" data-bind="click: $root.save, enable: $parent.saveBtnEnabled">Send</button>
+                <button type="button" class="btn btn-success" data-bind="click: $parent.save.bind($data, $parent), enable: $parent.formEnabled">Send</button>
             </form>
         </section>
     </div>
