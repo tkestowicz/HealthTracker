@@ -5,16 +5,16 @@ define(['providers/modal-provider', 'knockout', 'jquery', 'knockout-validation',
 
 		var createFormViewModel = function(){
 			return {
-				date: ko.observable('2014-05-02').extend({ required: true, date: true }),
-				weight: ko.observable(93).extend({ required: true, min: 0, number: true }),
+				date: ko.observable().extend({ required: true, date: true }),
+				weight: ko.observable().extend({ required: true, min: 0, number: true }),
 				fat: {
-					percent: ko.observable(16.1).extend({ required: true, min: 0, max: 100, number: true }),
-					mass: ko.observable(15).extend({ required: true, min: 0, number: true }),
-					visceralRating: ko.observable(3).extend({ min: 0, number: true }),
+					percent: ko.observable().extend({ required: true, min: 0, max: 100, number: true }),
+					mass: ko.observable().extend({ required: true, min: 0, number: true }),
+					visceralRating: ko.observable().extend({ min: 0, number: true }),
 				},
-				muscleMass: ko.observable(74.5).extend({ required: true, min: 0, number: true }),
-				metabolicAge: ko.observable(17).extend({ required: true, min: 0, number: true }),
-				bmr: ko.observable(2332).extend({ min: 0, number: true })
+				muscleMass: ko.observable().extend({ required: true, min: 0, number: true }),
+				metabolicAge: ko.observable().extend({ required: true, min: 0, number: true }),
+				bmr: ko.observable().extend({ min: 0, number: true })
 			};
 		};
 
@@ -35,14 +35,16 @@ define(['providers/modal-provider', 'knockout', 'jquery', 'knockout-validation',
 					app.showMessage('An error occured during measurement saving. Please try again.');					
 				}).done(function(){
 					app.showMessage('Measurement successfully saved.');
-					closeWindow(view);	
+					modalProvider.close(view);	
 				}).always(function(){
 					view.formEnabled(true);
 				});
 		}
-		else
+		else{
+			view.validationErrors.showAllMessages();
 			app.showMessage("Some fields have invalid values.");
-	}
+		}			
+	};
 
 	ctor.prototype.isValid = function(field){
 			return field.isValid() && field.isModified();

@@ -1,4 +1,4 @@
-(function init(restify, mongojs, workoutService){
+(function init(restify, mongojs, workoutService, measurementService){
 
 // bases on: https://www.openshift.com/blogs/day-27-restify-build-correct-rest-web-services-in-nodejs
 var cfg = {
@@ -9,7 +9,8 @@ var cfg = {
 		port: '8080'
 	}, 
 	services = {
-		workout: workoutService
+		workout: workoutService,
+		measurement: measurementService
 	},
 	server = restify.createServer({
 		name : cfg.applicationName
@@ -21,9 +22,10 @@ server.use(restify.bodyParser());  // takes care of turning your request data in
 server.use(restify.CORS());
 
 services.workout(db, server, restify);
+services.measurement(db, server, restify);
 
 server.listen(cfg.port ,cfg.serverAddress, function(){
     console.log('%s listening at %s ', server.name , server.url);
 });
 
-}(require('restify'), require("mongojs"), require('./services/workout.js')));
+}(require('restify'), require("mongojs"), require('./services/workout.js'), require('./services/measurement.js')));

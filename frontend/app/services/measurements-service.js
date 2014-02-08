@@ -12,7 +12,7 @@ define(['plugins/http', 'repositories/routes-repository', 'helpers/date-helper']
 						month: dateOfTheTraining.getMonth(),
 						week: dateHelper.weekNumberOfTheYear(dateOfTheTraining)
 					},
-					params:
+					params: {
 						weight: measurementData.weight(),
 						fat:{
 							percent: measurementData.fat.percent(),
